@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "c01a9dd3-93d6-43a2-8b6d-960b791a248c",
+		"name": "Mortgage_Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32521704"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Steve Alex\",\n    \"address\": {\n        \"street\": \"775 Haymond Rocks\",\n        \"state\": \"OR\",\n        \"postalCode\": \"97218\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Mortgage for Customer(s)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mortgageSum\": 350000,\n    \"startDate\": \"2024-01-02\",\n    \"endDate\": \"2029-01-20\",\n    \"interestPercentage\": 3.5,\n    \"mortgageType\": \"LIN\",\n    \"customers\": [\n        \"86beaf48-80ef-45ab-aae2-89facf1a8de1\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/get/{AccountID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"get",
+						"{AccountID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Mortgages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mortgage By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/get/{MortgageID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"get",
+						"{MortgageID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountId\": \"99c14461-fba1-4272-a7c1-83fd03f3f738\",\n    \"address\": {\n        \"street\": \"Parklaan 6 E.\",\n        \"state\": \"Amsterdam\",\n        \"postalCode\": \"2132 BN\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Mortgage",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mortgageId\": \"10da196a-abed-4c3e-beb6-7029d52b2253\",\n    \"mortgageSum\": 500,\n    \"startDate\": \"2024-12-01\",\n    \"endDate\": \"2029-09-20\",\n    \"interestPercentage\": 3.5,\n    \"mortgageType\": \"LIN\",\n    \"customers\": [\n        \"115e77b3-605b-495a-a606-cc0e577c5099\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Customer To Mortgage",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mortgageId\": \"b97b862d-def2-4995-8867-314a267b69d1\",\n    \"customers\": [\n        \"2477ca82-b0ea-4b89-bef4-5a6dab6da399\",\n        \"dd57f1b8-b3d5-4c78-9590-23a3b9508362\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/addCustomer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"addCustomer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mortgage",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/mortgage/delete/{MortgageID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"mortgage",
+						"delete",
+						"{MortgageID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/delete/{AccountID}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"delete",
+						"{AccountID}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Mortgage For Customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": \"614328e1-139b-4e3e-9a18-8ff93ac5d225\",\n    \"mortgageId\": \"5bd89529-907e-4b7c-a3b0-8f9abb0b0050\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rabo/customer/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rabo",
+						"customer",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

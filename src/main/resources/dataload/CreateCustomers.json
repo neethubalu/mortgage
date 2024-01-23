@@ -1,0 +1,26 @@
+[
+  {
+  "name": "John Doe",
+  "address" :{
+    "street":"56 Franklin Dr.",
+    "state":"Roseville",
+    "postalCode":"MI 48066"
+  }
+},
+  {
+    "name": "Hubrecht Steve",
+    "address" :{
+      "street":"83 East Spruce Stree",
+      "state":"Stroudsburg",
+      "postalCode":"PA 18360"
+    }
+  },
+  {
+    "name": "Martin Joy",
+    "address": {
+      "street": "4 Pearl Drive",
+      "state": "Menomonee Falls",
+      "postalCode": "WI 53051"
+    }
+  }
+  ]

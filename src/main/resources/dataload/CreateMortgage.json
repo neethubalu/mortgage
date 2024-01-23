@@ -1,0 +1,8 @@
+ {   "mortgageSum": 350000.0,
+    "startDate": "2024-01-20",
+    "endDate": "2029-01-20",
+    "interestPercentage": 3.5,
+    "mortgageType": "ANN",
+    "customers": [
+    ]
+ }
