@@ -37,12 +37,12 @@ public class MortgageServiceImpl implements MortgageService {
     public GenericSuccessResponse createMortgage(CreateMortgageRequest createMortgageRequest) throws MortgageCreationException {
         try {
             var mortgageEntity = modelMapper.map(createMortgageRequest, Mortgage.class);
-
-            List<Customer> customerEntities = customerRepository.findAllById(createMortgageRequest.getCustomers());
-            if (customerEntities.isEmpty())
-                throw new CustomerNotFoundException(ApiConstants.CUSTOMER_NOT_FOUND_MSG);
-
-            mortgageEntity.setCustomers(customerEntities);
+            if (!createMortgageRequest.getCustomers().isEmpty()) {
+                List<Customer> customerEntities = customerRepository.findAllById(createMortgageRequest.getCustomers());
+                if (customerEntities.isEmpty())
+                    throw new CustomerNotFoundException(ApiConstants.CUSTOMER_NOT_FOUND_MSG);
+                mortgageEntity.setCustomers(customerEntities);
+            }
             mortgageEntity = mortgageRepository.save(mortgageEntity);
 
             log.info("Created mortgage with ID: {} ", mortgageEntity.getMortgageId());
@@ -51,7 +51,7 @@ public class MortgageServiceImpl implements MortgageService {
         } catch (Exception e) {
             throw new MortgageCreationException(e.getMessage());
         }
-        }
+    }
 
     @Override
     public List<MortgageResponse> getAllMortgages() {

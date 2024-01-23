@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class MortgageControllerTest extends IntegrationTest {
     @Test
-    void mortgageCreation() throws Exception {
+    void mortgageCreationSuccess() throws Exception {
         mvc.perform((post("/rabo/mortgage/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{ \"mortgageSum\": 350000.0, \"startDate\": \"2024-01-20\", \"endDate\": \"2029-01-20\", \"interestPercentage\": 3.5, \"mortgageType\": \"ANN\", \"customers\": [] }")
@@ -21,19 +21,27 @@ class MortgageControllerTest extends IntegrationTest {
                 .andExpect(content().string(containsString("350000.0")));
     }
     @Test
+    void mortgageCreationException() throws Exception {
+        mvc.perform((post("/rabo/mortgage/create")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{ \"mortgageSum\": 350000.0, \"startDate\": \"2024-01-20\", \"endDate\": \"2029-01-20\", \"interestPercentage\": 3.5, \"mortgageType\": \"ANN\", \"customers\": [\"b97b862d-def2-4995-8867-314a265469d\"] }")
+                ))
+                .andExpect(status().isInternalServerError());
+    }
+
+    @Test
     void mortgageCreationBlankException() throws Exception {
         mvc.perform((post("/rabo/mortgage/create")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{ \"mortgageSum\": 350000.0, \"startDate\": \"2024-01-20\", \"endDate\": \"2029-01-20\", \"interestPercentage\": 3.5, \"mortgageType\": \"ANN\", \"customers\": [] }")
+                        .content("{ \"startDate\": \"2024-01-20\", \"endDate\": \"2029-01-20\", \"interestPercentage\": 3.5, \"mortgageType\": \"ANN\", \"customers\": [] }")
                 ))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("350000.0")));
+                .andExpect(status().isBadRequest());
     }
     @Test
     void getAllMortgages () throws Exception {
         mvc.perform((get("/rabo/mortgage/get")))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("350000.0")));;
+                .andExpect(content().string(containsString("350000.0")));
     }
 
     @Test
